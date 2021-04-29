@@ -31,7 +31,7 @@ const dateFormat = require("dateformat");
 var table = require("table").table;
 const Discord = require("discord.js");
 const cmd = require("node-cmd");
-const prefix = "";
+const prefix = "H!";
 const cooldown = new Set()
 const cdtime =5;
 client.login("");
@@ -39,7 +39,7 @@ client.login("");
   console.log(`${client.user.tag}`);
   console.log(`Guilds: ${client.guilds.size}`);
   console.log(`Users: ${client.users.size}`);
-  client.user.setActivity(`${prefix}help`, { Type: "Playing" });
+  client.user.setActivity(`${prefix}help Security Is Here`, { Type: "Playing" });
 });
 
 //////
@@ -1187,38 +1187,6 @@ client.on("message", message => {
     message.delete();
     return message.reply(
       `**${warn} | You Dont Have \`MANAGE_EMOJIS\` Permission .**`
-    );
-  }
-});
-client.on("message", message => {
-  var args = message.content.split(/[ ]+/);
-  if (message.content.includes("@everyone")) {
-    if (message.member.hasPermission("MENTION_EVERYONE")) return;
-    if (!message.channel.guild) return;
-    if (!spread[message.guild.id])
-      spread[message.guild.id] = {
-        onoff: "Off"
-      };
-    if (spread[message.guild.id].onoff === "Off") return;
-    message.delete();
-    return message.reply(
-      `**${warn} | You Dont Have \`MENTION_EVERYONE\` Permission .**`
-    );
-  }
-});
-client.on("message", message => {
-  var args = message.content.split(/[ ]+/);
-  if (message.content.includes("@here")) {
-    if (message.member.hasPermission("MENTION_EVERYONE")) return;
-    if (!message.channel.guild) return;
-    if (!spread[message.guild.id])
-      spread[message.guild.id] = {
-        onoff: "Off"
-      };
-    if (spread[message.guild.id].onoff === "Off") return;
-    message.delete();
-    return message.reply(
-      `**${warn} | You Dont Have \`MENTION_EVERYONE\` Permission .**`
     );
   }
 });
